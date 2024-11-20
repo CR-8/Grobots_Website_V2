@@ -12,6 +12,6 @@ import { neonCursor } from 'https://unpkg.com/threejs-toys@0.0.8/build/threejs-t
       sleepRadiusY: 0,
       sleepTimeCoefX: 0.0025,
       sleepTimeCoefY: 0.001,
-      colors: ['#ff0000', '#00ff00', '#0000ff', '#ff00ff', '#ffff00']
+      colors: ['#00ff00', '#0066ff', '#ffff00', '#ff3300', '#00ffff'],
     }
   );
