@@ -3,58 +3,78 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.querySelector('.menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.navlink');
-    let lastScrollY = window.scrollY;
-    let menuOpen = false;
     
-    // Menu Button Click Handler
-    menuBtn.addEventListener('click', () => {
-        if(!menuOpen) {
-            menuBtn.classList.add('open');
-            navLinks.classList.add('active');
-            menuOpen = true;
-        } else {
-            menuBtn.classList.remove('open');
-            navLinks.classList.remove('active');
-            menuOpen = false;
-        }
+    // Add animation delays to nav items
+    document.querySelectorAll('.nav-links h4').forEach((item, index) => {
+        item.style.setProperty('--i', index);
     });
 
-    // Close menu when clicking a link
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            menuBtn.classList.remove('open');
-            navLinks.classList.remove('active');
-            menuOpen = false;
-        });
-    });
+    // Handle scroll behavior
+    let lastScroll = 0;
+    const scrollThreshold = 100;
 
-    // Scroll Handler
     window.addEventListener('scroll', () => {
-        // Add/remove scrolled class based on scroll position
-        if (window.scrollY > 50) {
+        const currentScroll = window.pageYOffset;
+        
+        // Add scrolled class when scrolling down
+        if (currentScroll > scrollThreshold) {
             nav.classList.add('scrolled');
         } else {
             nav.classList.remove('scrolled');
         }
-        
-        // Only hide navbar on scroll if menu is closed
-        if (!menuOpen) {
-            if (window.scrollY > lastScrollY) {
-                nav.style.transform = 'translateY(-100%)';
-            } else {
-                nav.style.transform = 'translateY(0)';
-            }
-        }
-        
-        lastScrollY = window.scrollY;
+
+        lastScroll = currentScroll;
     });
 
-    // Close menu on window resize if open
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768 && menuOpen) {
-            menuBtn.classList.remove('open');
+    // Mobile menu toggle
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            !menuBtn.contains(e.target)) {
             navLinks.classList.remove('active');
-            menuOpen = false;
+            document.body.style.overflow = '';
         }
+    });
+
+    // Handle link clicks
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            // Remove active class from all links
+            links.forEach(l => l.classList.remove('active'));
+            // Add active class to clicked link
+            link.classList.add('active');
+            
+            // Close mobile menu if open
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Set active link based on scroll position
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('div[id^="page"]');
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (window.pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
     });
 });
