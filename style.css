@@ -1,5 +1,27 @@
+/*
+ * Global Styles
+ * Description: Core styles for the Grobots website
+ * Author: Robotics Club SRMCEM
+ * Version: 1.0
+ */
+
+/*
+ * Import Google Fonts
+ * Description: Import Montserrat and Poppins fonts from Google Fonts
+ */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/*
+ * Import fonts
+ * Description: Import Syne and Inter fonts from Google Fonts
+ */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/*
+ * Reset default styles and set base font
+ * Description: Reset default browser styles and set base font to Montserrat
+ */
 *{
     margin: 0;
     padding: 0;
@@ -8,6 +30,10 @@
     color: #fff;
 }
 
+/*
+ * Base HTML and Body Styles
+ * Description: Set base styles for HTML and Body elements
+ */
 html, body, #app {
     height: 100vh;
     width: 100vw;
@@ -16,10 +42,49 @@ html, body, #app {
     scroll-behavior: smooth;
     scroll-snap-type: y mandatory;
     background-color: transparent;
-    
 }
 
-/* Scroll Indicator Optimization */
+/*
+ * Container Styles
+ * Description: Styles for main container and sections
+ */
+.main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/*
+ * Root Variables
+ * Description: Set root variables for the website
+ */
+:root {
+    --heading-font: 'Syne', sans-serif;
+    --content-font: 'Inter', sans-serif;
+    --primary-color: #8aff00;
+    --primary-color-dark: #70cc00;
+    --text-color: #ffffff;
+    --text-color-muted: rgba(255, 255, 255, 0.7);
+    --background-dark: rgba(0, 0, 0, 0.8);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/*
+ * Scroll Indicator Optimization
+ * Description: Styles for the scroll indicator container
+ */
 .scroll-indicator-container {
     position: fixed;
     bottom: 2.5rem;
@@ -43,11 +108,19 @@ html, body, #app {
     pointer-events: none;
 }
 
+/*
+ * Show scroll indicator on page 1
+ * Description: Show scroll indicator on page 1
+ */
 #page1 .scroll-indicator-container {
     opacity: 1;
     pointer-events: auto;
 }
 
+/*
+ * Scroll Indicator Container After Pseudo Element
+ * Description: Styles for the scroll indicator container after pseudo element
+ */
 .scroll-indicator-container::after {
     content: '';
     position: absolute;
@@ -62,6 +135,10 @@ html, body, #app {
     pointer-events: none;
 }
 
+/*
+ * Scroll Indicator Container Hover Styles
+ * Description: Styles for the scroll indicator container on hover
+ */
 .scroll-indicator-container:hover {
     transform: translateX(-50%) translateY(-2px);
     background: rgba(0, 0, 0, 0.25);
@@ -70,6 +147,10 @@ html, body, #app {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
+/*
+ * Scroll Arrow Styles
+ * Description: Styles for the scroll arrow
+ */
 .scroll-arrow {
     width: 16px;
     height: 28px;
@@ -79,11 +160,19 @@ html, body, #app {
     animation: scrollIndicator 3s infinite;
 }
 
+/*
+ * Scroll Arrow Hover Styles
+ * Description: Styles for the scroll arrow on hover
+ */
 .scroll-indicator-container:hover .scroll-arrow {
     stroke: var(--primary-color);
     animation-duration: 2s;
 }
 
+/*
+ * Scroll Indicator Animation
+ * Description: Animation for the scroll indicator
+ */
 @keyframes scrollIndicator {
     0%, 100% {
         transform: translateY(0);
@@ -95,7 +184,76 @@ html, body, #app {
     }
 }
 
-/* Hide scroll indicator when at bottom of page */
+/*
+ * Animation Keyframes
+ * Description: Additional animation keyframes
+ */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Utility Classes
+ * Description: Additional utility classes
+ */
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.slide-in {
+    animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.hover-lift {
+    transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/*
+ * Hide scroll indicator when at bottom of page
+ * Description: Hide scroll indicator when at bottom of page
+ */
 @media (max-height: 500px) {
     .scroll-indicator-container {
         display: none;

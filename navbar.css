@@ -1,3 +1,11 @@
+/*
+ * Navbar Styles
+ * Description: Styles for the main navigation bar and mobile menu
+ * Author: Robotics Club SRMCEM
+ * Version: 1.0
+ */
+
+/* Main Navigation Bar */
 #nav {
     height: 100px;
     width: 100vw;
@@ -13,11 +21,13 @@
     backdrop-filter: blur(8px);
 }
 
+/* Scrolled State Styles */
 #nav.scrolled {
     height: 80px;
     backdrop-filter: blur(12px);
 }
 
+/* Logo Container Styles */
 .logo-container {
     position: relative;
     height: 90px;
@@ -25,8 +35,10 @@
     align-items: center;
     margin-right: 60px;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--heading-font);
 }
 
+/* SRMCEM Logo Styles */
 .logo-srm {
     height: 90px;
     width: auto;
@@ -34,6 +46,7 @@
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
 }
 
+/* Grobots Logo Styles - Hidden by default, shown on hover */
 .logo-grobots {
     opacity: 0;
     position: absolute;
@@ -45,6 +58,7 @@
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
 }
 
+/* Logo Hover Effects */
 .logo-container:hover .logo-srm {
     opacity: 0;
     transform: scale(0.95) translateX(-10px);
@@ -55,6 +69,7 @@
     transform: scale(1) translateX(-10px);
 }
 
+/* Scrolled State Logo Adjustments */
 #nav.scrolled .logo-container {
     height: 70px;
 }
@@ -64,12 +79,14 @@
     height: 70px;
 }
 
+/* Navigation Links Container */
 .nav-links {
     display: flex;
     align-items: center;
     gap: clamp(20px, 3vw, 50px);
 }
 
+/* Navigation Text Styles */
 #nav h4 {
     text-transform: uppercase;
     font-weight: 500;
@@ -77,6 +94,7 @@
     position: relative;
 }
 
+/* Navigation Link Styles */
 .navlink {
     text-decoration: none;
     color: #fff;
@@ -88,8 +106,10 @@
     border-radius: 12px;
     background: transparent;
     letter-spacing: 0.5px;
+    font-family: var(--content-font);
 }
 
+/* Link Hover Effects */
 .navlink:hover {
     transform: translateY(-2px);
     opacity: 1;
@@ -97,6 +117,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Active Link State */
 .navlink.active {
     background: rgba(138, 255, 0, 0.15);
     color: #8aff00;
@@ -104,6 +125,7 @@
     opacity: 1;
 }
 
+/* Link Underline Animation */
 .navlink::after {
     content: '';
     position: absolute;
@@ -122,6 +144,7 @@
     opacity: 1;
 }
 
+/* Mobile Menu Button */
 .menu-btn {
     display: none;
     cursor: pointer;
@@ -140,16 +163,19 @@
     font-size: 24px;
 }
 
-/* Mobile Navigation */
+/* Mobile Navigation Styles */
 @media (max-width: 768px) {
+    /* Adjust navbar padding for mobile */
     #nav {
         padding: 0 20px;
     }
 
+    /* Show menu button on mobile */
     .menu-btn {
         display: block;
     }
 
+    /* Mobile Navigation Links Panel */
     .nav-links {
         position: fixed;
         top: 0;
@@ -167,15 +193,18 @@
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     }
 
+    /* Active Mobile Menu State */
     .nav-links.active {
         right: 0;
     }
 
+    /* Mobile Navigation Text Alignment */
     .nav-links h4 {
         width: 100%;
         text-align: center;
     }
 
+    /* Mobile Navigation Link Styles */
     .navlink {
         width: 100%;
         padding: 15px 20px;
@@ -195,11 +224,11 @@
     }
 }
 
-/* Animation for mobile menu items */
+/* Mobile Menu Animation */
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateX(30px);
     }
     to {
         opacity: 1;
@@ -207,6 +236,7 @@
     }
 }
 
+/* Animation for mobile menu items */
 .nav-links.active h4 {
     animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     animation-delay: calc(var(--i) * 0.1s);

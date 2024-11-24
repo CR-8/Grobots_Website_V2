@@ -1,33 +1,55 @@
-#page3.team-section {
+/*
+ * Team Section Styles (Page 3)
+ * Description: Styles for the Meet Our Team section
+ * Author: Robotics Club SRMCEM
+ * Version: 1.0
+ */
+
+/* Team Section Container */
+.team-section {
     min-height: 100vh;
     width: 100vw;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 2rem;
+    padding: 100px clamp(20px, 5vw, 150px);
     scroll-snap-align: start;
-    animation: fadeIn 1.5s ease-in;
+    background: var(--background-dark);
     z-index: 2;
-    background: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
 }
 
+/* Team Section Title */
 .team-title {
     text-align: center;
-    font-size: clamp(40px, 6vw, 80px);
-    margin-bottom: 50px;
-    font-weight: 900;
-    font-family: 'montserrat';
-    background: linear-gradient(45deg, var(--primary-color, #3498db), #2ecc71);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 60px;
+    font-family: var(--heading-font);
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--text-color), var(--text-color-muted));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
-    animation: fadeIn 1s ease-out forwards;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    animation: slideInFromBottom 0.8s ease-out forwards;
+    position: relative;
 }
 
+.team-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    transition: var(--transition-smooth);
+}
+
+.team-title:hover::after {
+    width: 150px;
+}
+
+/* Team Members Container */
 .team-container {
     width: 100%;
     max-width: 1400px;
@@ -36,128 +58,168 @@
     padding: 20px 0;
 }
 
+/* Scrollable Team Members List */
 .team-scroll {
     display: flex;
     gap: 30px;
-    padding: 20px;
+    padding: 20px 0;
     overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
-    animation: slideInRight 1s ease-out;
+    scrollbar-width: none;
+    opacity: 0;
+    animation: slideInFromBottom 0.8s 0.2s ease-out forwards;
 }
 
 .team-scroll::-webkit-scrollbar {
     display: none;
 }
 
+/* Individual Team Member Card */
 .team-member {
     min-width: 300px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 20px;
+    scroll-snap-align: start;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 1;
+    transition: var(--transition-smooth);
+    transform: translateY(30px);
+    opacity: 0;
+    animation: slideInFromBottom 0.8s ease-out forwards;
 }
 
 .team-member:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border-color: var(--primary-color, #3498db);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
 }
 
+/* Member Image Container */
 .member-image {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
     overflow: hidden;
-    border: 3px solid var(--primary-color, #3498db);
-    position: relative;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-md);
 }
 
+/* Member Image Styles */
 .member-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
+/* Member Image Hover Effect */
 .member-image:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
+/* Member Information Container */
 .member-info {
     text-align: center;
 }
 
+/* Member Name */
 .member-info h3 {
+    font-family: var(--heading-font);
     font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #ffffff;
+    margin-bottom: 5px;
+    color: var(--text-color);
     font-weight: 700;
 }
 
+/* Member Role */
 .member-info .role {
-    color: var(--primary-color, #3498db);
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    font-size: 1rem;
+    margin-bottom: 10px;
     font-weight: 500;
 }
 
+/* Member Bio */
 .member-info .bio {
-    color: #cccccc;
+    font-family: var(--content-font);
     font-size: 0.9rem;
-    line-height: 1.6;
+    color: var(--text-color-muted);
     margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-.team-member .social-links {
+/* Social Links Container */
+.social-links {
     display: flex;
     justify-content: center;
     gap: 15px;
 }
 
-.team-member .social-links a {
-    color: #ffffff;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+/* Individual Social Link */
+.social-links a {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
 }
 
-.team-member .social-links a:hover {
-    color: var(--primary-color, #3498db);
+/* Social Link Icons */
+.social-links a i {
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: var(--transition-smooth);
 }
 
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* Social Link Hover Effects */
+.social-links a:hover {
+    background: rgba(138, 255, 0, 0.15);
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
 }
 
-/* Responsive Design for Team Section */
+.social-links a:hover i {
+    color: var(--primary-color);
+}
+
+/* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
-    #page3.team-section {
-        padding: 100px 1rem;
-    }
-
-    .team-title {
-        font-size: clamp(30px, 5vw, 60px);
+    .team-section {
+        padding: 80px 20px;
     }
 
     .team-member {
-        min-width: 250px;
+        min-width: 280px;
     }
 
     .member-image {
-        width: 150px;
-        height: 150px;
+        height: 250px;
+    }
+}
+
+/* Stagger Animation for Team Members */
+.team-member:nth-child(1) { animation-delay: 0.3s; }
+.team-member:nth-child(2) { animation-delay: 0.4s; }
+.team-member:nth-child(3) { animation-delay: 0.5s; }
+.team-member:nth-child(4) { animation-delay: 0.6s; }
+.team-member:nth-child(5) { animation-delay: 0.7s; }
+.team-member:nth-child(6) { animation-delay: 0.8s; }
+
+/* Animation for Team Member Cards */
+@keyframes slideInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
