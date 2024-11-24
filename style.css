@@ -82,109 +82,36 @@ html, body, #app {
 }
 
 /*
- * Scroll Indicator Optimization
- * Description: Styles for the scroll indicator container
+ * Background Landing Styles
+ * Description: Styles for the landing page background
  */
-.scroll-indicator-container {
+#background-landing {
     position: fixed;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    cursor: pointer;
-    padding: 1.2rem 0.5rem;
-    background: rgba(0, 0, 0, 0.15);
-    border: 3px solid rgba(255, 255, 255, 0.8);
-    border-radius: 35px;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Landing Page Background */
+#page1 {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    will-change: transform;
-    opacity: 0;
-    pointer-events: none;
+    align-items: center;
+    text-align: center;
+    padding: 100px 20px;
+    scroll-snap-align: start;
+    background: transparent;
+    z-index: 1;
 }
 
-/*
- * Show scroll indicator on page 1
- * Description: Show scroll indicator on page 1
- */
-#page1 .scroll-indicator-container {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/*
- * Scroll Indicator Container After Pseudo Element
- * Description: Styles for the scroll indicator container after pseudo element
- */
-.scroll-indicator-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 35px;
-    padding: 2px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-/*
- * Scroll Indicator Container Hover Styles
- * Description: Styles for the scroll indicator container on hover
- */
-.scroll-indicator-container:hover {
-    transform: translateX(-50%) translateY(-2px);
-    background: rgba(0, 0, 0, 0.25);
-    border-color: var(--primary-color);
-    padding: 1.3rem 0.5rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-/*
- * Scroll Arrow Styles
- * Description: Styles for the scroll arrow
- */
-.scroll-arrow {
-    width: 16px;
-    height: 28px;
-    stroke: rgba(255, 255, 255, 0.95);
-    stroke-width: 2;
-    transform-origin: center;
-    animation: scrollIndicator 3s infinite;
-}
-
-/*
- * Scroll Arrow Hover Styles
- * Description: Styles for the scroll arrow on hover
- */
-.scroll-indicator-container:hover .scroll-arrow {
-    stroke: var(--primary-color);
-    animation-duration: 2s;
-}
-
-/*
- * Scroll Indicator Animation
- * Description: Animation for the scroll indicator
- */
-@keyframes scrollIndicator {
-    0%, 100% {
-        transform: translateY(0);
-        opacity: 0.7;
-    }
-    50% {
-        transform: translateY(4px);
-        opacity: 1;
-    }
-}
-
-/*
+/* 
  * Animation Keyframes
  * Description: Additional animation keyframes
  */
@@ -251,11 +178,109 @@ html, body, #app {
 }
 
 /*
- * Hide scroll indicator when at bottom of page
- * Description: Hide scroll indicator when at bottom of page
+ * Footer Styles
+ * Description: Styles for the footer section
  */
-@media (max-height: 500px) {
-    .scroll-indicator-container {
-        display: none;
+.footer {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), var(--background-dark));
+    color: var(--text-color);
+    padding: 4rem 2rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Syne', sans-serif;
+}
+
+.footer-section p {
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+    padding-left: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.footer-section i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 3rem 1rem 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 }

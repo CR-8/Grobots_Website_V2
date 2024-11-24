@@ -6,7 +6,7 @@
  */
 
 /* Main Container for Home Page */
-#page1 {
+#home.page1, .page1 {
     min-height: 100vh;
     width: 100vw;
     position: relative;
@@ -22,7 +22,7 @@
 }
 
 /* Main Heading Styles */
-#page1 h1 {
+#home.page1 h1, .page1 h1 {
     font-family: var(--heading-font);
     font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 900;
@@ -40,7 +40,7 @@
 }
 
 /* Subheading Styles */
-#page1 h2 {
+#home.page1 h2, .page1 h2 {
     font-family: var(--heading-font);
     font-size: clamp(1.5rem, 4vw, 3rem);
     font-weight: 700;
@@ -58,7 +58,7 @@
 }
 
 /* Welcome Text Styles */
-#page1 h3 {
+#home.page1 h3, .page1 h3 {
     font-family: var(--heading-font);
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: 500;
@@ -71,7 +71,7 @@
 }
 
 /* Description Text Styles */
-#page1 p {
+#home.page1 p, .page1 p {
     font-family: var(--content-font);
     font-size: clamp(1rem, 1.2vw, 1.3rem);
     max-width: 800px;
@@ -143,16 +143,16 @@
 
 /* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
-    #page1 {
+    #home.page1, .page1 {
         padding: 120px 20px;
         justify-content: center;
     }
 
-    #page1 h1 {
+    #home.page1 h1, .page1 h1 {
         letter-spacing: -1px;
     }
 
-    #page1 p {
+    #home.page1 p, .page1 p {
         padding: 0 20px;
     }
 

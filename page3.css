@@ -62,8 +62,10 @@
 .team-scroll {
     display: flex;
     gap: clamp(20px, 3vw, 40px);
-    animation: scrollTeam 10s linear infinite;
+    animation: scrollTeam 30s linear infinite;
     padding: 20px 8px;
+    /* Ensure there's enough space for the animation */
+    width: max-content;
 }
 
 /* Pause animation on hover */
@@ -71,18 +73,12 @@
     animation-play-state: paused;
 }
 
-/* Double the content for seamless loop */
-.team-scroll {
-    display: flex;
-    animation: scrollTeam 20s linear infinite;
-}
-
 @keyframes scrollTeam {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-100% / 2));
+        transform: translateX(-1920px); /* Fixed pixel value based on total width of visible cards */
     }
 }
 

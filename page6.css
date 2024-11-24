@@ -3,13 +3,14 @@
     min-height: 100vh;
     width: 100vw;
     position: relative;
-    padding: 80px clamp(20px, 5vw, 100px);
+    padding: 80px clamp(20px, 5vw, 100px) 0;
     scroll-snap-align: start;
     background: linear-gradient(to bottom, var(--background-dark), rgba(0, 0, 0, 0.95));
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0;
 }
 
 .contact {
@@ -22,6 +23,8 @@
     height: calc(100vh - 160px);
     max-height: 800px;
     position: relative;
+    align-items: stretch;
+    padding-bottom: 0;
 }
 
 .contact::before {
@@ -47,14 +50,15 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    display: flex;
 }
-
 
 .map iframe {
     width: 100%;
     height: 100%;
     border-radius: 20px;
     transition: filter 0.3s ease;
+    border: none;
 }
 
 /* Form Section */
@@ -133,8 +137,7 @@
 .form textarea {
     flex: 1;
     min-height: 120px;
-    max-height: 200px;
-    resize: none;
+    resize: vertical;
 }
 
 .form button {
@@ -190,23 +193,22 @@
 
     .contact {
         flex-direction: column;
-        height: auto;
         min-height: auto;
+        height: auto;
         gap: 1.5rem;
     }
 
     .map {
-        height: 40vh;
+        height: 300px;
         min-height: 300px;
     }
 
     .form {
-        padding: 1.5rem;
-        min-height: 450px;
+        width: 100%;
     }
 
     .form textarea {
-        min-height: 100px;
+        min-height: 150px;
     }
 }
 
