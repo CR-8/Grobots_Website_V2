@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="page1.css">
     <link rel="stylesheet" href="page2.css">
     <link rel="stylesheet" href="page3.css">
+    <link rel="stylesheet" href="page4.css">
+    <link rel="stylesheet" href="page6.css">
     <!-- Third-party CSS Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons@4.29.0/dist/feather.min.css">
@@ -43,6 +45,7 @@
                     <h4><a href="#page1" class="navlink"><b>Home</b></a></h4>
                     <h4><a href="#page2" class="navlink"><b>About Us</b></a></h4>
                     <h4><a href="#page3" class="navlink"><b>Meet The Team</b></a></h4>
+                    <h4><a href="#initiatives" class="navlink"><b>Initiatives</b></a></h4>
                     <h4><a href="#page4" class="navlink"><b>Achievements</b></a></h4>
                     <h4><a href="#page5" class="navlink"><b>Contact</b></a></h4>
                 </div>
@@ -250,12 +253,116 @@
                 </div>
             </div>
 
+            <!-- Initiatives Section -->
+            <section id="initiatives">
+                <h1 class="initiatives-title">Our Impact</h1>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Initiatives</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                </div>
+                
+                <!-- Initiative Cards -->
+                <div class="initiative-cards">
+                    <!-- Patents Initiative -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="initiative-title">Patents & Research</h3>
+                        <p class="initiative-description">
+                            Fostering innovation through patent development and research initiatives. Our members work on cutting-edge robotics technologies and solutions.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">5+</div>
+                                <div class="initiative-stat-label">Patents Filed</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">10+</div>
+                                <div class="initiative-stat-label">Research Papers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Robotics Classes -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="initiative-title">Robotics Classes</h3>
+                        <p class="initiative-description">
+                            Comprehensive robotics education program covering electronics, programming, and mechanical design. Learn from experienced mentors and hands-on projects.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">100+</div>
+                                <div class="initiative-stat-label">Students Trained</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">20+</div>
+                                <div class="initiative-stat-label">Workshops</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Girl Empowerment -->
+                    <div class="initiative-card">
+                        <div class="initiative-icon">
+                            <i class="fas fa-venus"></i>
+                        </div>
+                        <h3 class="initiative-title">Girl Empowerment</h3>
+                        <p class="initiative-description">
+                            Empowering women in STEM through dedicated mentorship, workshops, and leadership opportunities in robotics and technology.
+                        </p>
+                        <div class="initiative-stats">
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">40%</div>
+                                <div class="initiative-stat-label">Female Members</div>
+                            </div>
+                            <div class="initiative-stat">
+                                <div class="initiative-stat-value">15+</div>
+                                <div class="initiative-stat-label">Women Leaders</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Scroll Indicator -->
             <div class="scroll-indicator-container" onclick="scrollToNextSection()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="scroll-arrow">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25 12 21m0 0-3.75-3.75M12 21V3" />
                 </svg>
             </div>
+            <div class="page6">
+                <div class="contact">
+                    <!-- Embedded Google Maps iframe for location -->
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.378950874851!2d81.06994017504924!3d26.891465976659845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399958aa7cde631d%3A0xa40f85bf5cea3cc2!2sShri%20Ramswaroop%20Memorial%20Group%20of%20Professional%20Colleges%20MBA%20Block!5e0!3m2!1sen!2sin!4v1730471692550!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <!-- Contact form for user messages -->
+                    <div class="form">
+                        <h1>Contact Us</h1>
+                        <form action="https://formsubmit.co/yashtiwarit67@gmail.com" method="POST">
+                            <input type="text" name="Name" required placeholder="Name">
+                            <input type="email" name="Mail" required placeholder="Email">
+                            <input type="text" name="Subject" required placeholder="Subject">
+                            <textarea name="Message" required placeholder="Message"></textarea>
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>        
         </div>
     </div>
 

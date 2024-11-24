@@ -55,39 +55,53 @@
     max-width: 1400px;
     margin: 0 auto;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 20px 5px;
 }
 
 /* Scrollable Team Members List */
 .team-scroll {
     display: flex;
-    gap: 30px;
-    padding: 20px 0;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    opacity: 0;
-    animation: slideInFromBottom 0.8s 0.2s ease-out forwards;
+    gap: clamp(20px, 3vw, 40px);
+    animation: scrollTeam 10s linear infinite;
+    padding: 20px 8px;
 }
 
-.team-scroll::-webkit-scrollbar {
-    display: none;
+/* Pause animation on hover */
+.team-scroll:hover {
+    animation-play-state: paused;
+}
+
+/* Double the content for seamless loop */
+.team-scroll {
+    display: flex;
+    animation: scrollTeam 20s linear infinite;
+}
+
+@keyframes scrollTeam {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-100% / 2));
+    }
 }
 
 /* Individual Team Member Card */
 .team-member {
-    min-width: 300px;
+    flex: 0 0 auto;
+    width: 300px;
+    margin: 8px;
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 20px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
     scroll-snap-align: start;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: var(--transition-smooth);
     transform: translateY(30px);
     opacity: 0;
     animation: slideInFromBottom 0.8s ease-out forwards;
+    padding-bottom: 15px;
 }
 
 .team-member:hover {
@@ -157,6 +171,7 @@
     display: flex;
     justify-content: center;
     gap: 15px;
+    margin-bottom: 15px;
 }
 
 /* Individual Social Link */
@@ -169,6 +184,7 @@
     align-items: center;
     justify-content: center;
     transition: var(--transition-smooth);
+    margin-bottom: 10px;
 }
 
 /* Social Link Icons */

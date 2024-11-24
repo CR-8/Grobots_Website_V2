@@ -1,0 +1,220 @@
+/*
+ * Initiatives Section Styles
+ * Description: Styles for the Initiatives and Impact section
+ * Author: Robotics Club SRMCEM
+ * Version: 1.0
+ */
+
+/* Initiatives Section Container */
+#initiatives {
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    padding: 100px clamp(20px, 5vw, 150px);
+    scroll-snap-align: start;
+    background: var(--background-dark);
+    z-index: 2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Initiatives Section Title */
+.initiatives-title {
+    text-align: center;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 60px;
+    font-family: var(--heading-font);
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--text-color), var(--text-color-muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: slideInFromBottom 0.8s ease-out forwards;
+    position: relative;
+}
+
+.initiatives-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), transparent);
+    transition: var(--transition-smooth);
+}
+
+.initiatives-title:hover::after {
+    width: 150px;
+}
+
+/* Stats Container */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(30px, 4vw, 50px);
+    width: 100%;
+    max-width: 1200px;
+    opacity: 0;
+    animation: slideInFromBottom 0.8s 0.2s ease-out forwards;
+}
+
+/* Stat Item */
+.stat-item {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    padding: clamp(25px, 4vw, 40px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.stat-item:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Stat Number */
+.stat-number {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    font-family: var(--heading-font);
+    background: linear-gradient(45deg, var(--primary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+/* Stat Label */
+.stat-label {
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    color: var(--text-color-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--content-font);
+}
+
+/* Initiative Cards Container */
+.initiative-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: clamp(30px, 4vw, 50px);
+    width: 100%;
+    max-width: 1400px;
+    margin: 50px auto;
+    opacity: 0;
+    animation: slideInFromBottom 0.8s 0.3s ease-out forwards;
+}
+
+/* Initiative Card */
+.initiative-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: clamp(25px, 4vw, 40px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+}
+
+.initiative-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Initiative Icon */
+.initiative-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--text-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Initiative Title */
+.initiative-title {
+    font-family: var(--heading-font);
+    font-size: clamp(1.5rem, 2vw, 1.8rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+/* Initiative Description */
+.initiative-description {
+    font-family: var(--content-font);
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--text-color-muted);
+    margin-bottom: 20px;
+}
+
+/* Initiative Stats */
+.initiative-stats {
+    display: flex;
+    gap: 20px;
+    margin-top: auto;
+}
+
+.initiative-stat {
+    flex: 1;
+    text-align: center;
+}
+
+.initiative-stat-value {
+    font-family: var(--heading-font);
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.initiative-stat-label {
+    font-family: var(--content-font);
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+    margin-top: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #initiatives {
+        padding: 80px 20px;
+    }
+    
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .stat-item {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .initiative-cards {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
+    
+    .initiative-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
